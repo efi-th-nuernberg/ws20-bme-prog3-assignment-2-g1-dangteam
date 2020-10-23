@@ -39,9 +39,9 @@ class TextFormatter {
       }
 
       else{
-        System.out.print(line);
-        System.out.print("\n");
+        System.out.print(line + '\n');
         line = "";
+        line += word + ' ';
       }
     }
     // Prints out the last line of the given String 
