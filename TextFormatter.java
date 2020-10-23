@@ -1,3 +1,6 @@
+import java.util.StringTokenizer;
+import java.lang.StringBuffer;
+
 class TextFormatter {
 
   private static final String text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy " +
@@ -9,18 +12,33 @@ class TextFormatter {
           "Lorem ipsum dolor sit amet.";
 
   public static void main(String[] args) {
-    TextFormatter formatter = new TextFormatter(30);
-    formatter.print(text);
+    //TextFormatter formatter = new TextFormatter(30);
+    //formatter.print(text);
+    print(text);
   }
 
   // Konstruktor
-  public TextFormatter(int maxLineLength) {
-    // ...
-  }
+  /*public TextFormatter(int maxLineLength) {
+    int maxLineL = maxLineLength;
+    this.print = print(text); 
+  }*/
 
   // Ausgabe
-  public void print(String aText) {
-    System.out.println("Hier sollte der Text mit passendem Umbruch erscheinen.");
+  public static void print(String aText) {
+    String line = "";
+    StringTokenizer st = new StringTokenizer(aText);
+    while(st.hasMoreTokens())
+    {
+      String word = st.nextToken();
+      
+      if(line.length() + word.length() <= 30){
+        line += word + " ";
+      }
+      else{
+        System.out.print(line);
+        System.out.print("\n");
+        line = "";
+      }  
+    }
   }
-
 }
