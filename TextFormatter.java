@@ -1,4 +1,9 @@
+import java.util.StringTokenizer;
+import java.lang.StringBuffer;
+
 class TextFormatter {
+  //Atributes 
+  private final int maxLineLength;
 
   private static final String text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy " +
           "eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et " +
@@ -15,12 +20,28 @@ class TextFormatter {
 
   // Konstruktor
   public TextFormatter(int maxLineLength) {
-    // ...
+    this.maxLineLength = maxLineLength;
   }
 
   // Ausgabe
   public void print(String aText) {
-    System.out.println("Hier sollte der Text mit passendem Umbruch erscheinen.");
-  }
+    String line = "";
+    StringTokenizer st = new StringTokenizer(aText);
+    while(st.hasMoreTokens())
+    {
+      String word = st.nextToken();
 
+      if(line.length() + word.length() <= maxLineLength){
+        line += word + " ";
+      }
+      else{
+        System.out.print(line);
+        System.out.print("\n");
+        line = "";
+        line += word + " ";
+      }  
+    }
+    // Prints out the last Line of the given String
+    System.out.print(line + '\n');
+  }
 }
