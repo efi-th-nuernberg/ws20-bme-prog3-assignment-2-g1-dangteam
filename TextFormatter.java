@@ -1,5 +1,4 @@
 import java.util.StringTokenizer;
-import java.lang.StringBuffer;
 
 class TextFormatter {
   // Attributes
